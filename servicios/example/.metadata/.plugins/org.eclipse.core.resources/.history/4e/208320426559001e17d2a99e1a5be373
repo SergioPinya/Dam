@@ -1,0 +1,26 @@
+package example;
+
+import java.util.Scanner;
+
+public class Ejer6 {
+
+	public static void main(String[] args) {
+		
+		int i = 0;
+		int[] numero1= new int[5];
+		do {
+			Scanner teclado = new Scanner(System.in);
+			
+			System.out.println("Posa un numero: ");
+			numero1 = teclado.nextInt();
+			
+			System.out.println(w);
+		  i++;
+
+			teclado.close();
+		}
+		while (i < 5);
+		
+	}
+
+}

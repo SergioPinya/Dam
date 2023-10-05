@@ -1,0 +1,18 @@
+package example;
+
+import java.util.Scanner;
+
+public class Ejer8 {
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+
+		System.out.println("Posa un numero del 1 al 12: ");
+		int numero = teclado.nextInt();
+		 if(numero) {
+			 
+		 }
+		 
+		teclado.close();
+		
+	}
+}

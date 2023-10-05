@@ -1,0 +1,19 @@
+package ejerT1;
+
+import java.io.File;
+import java.io.FilenameFilter;
+
+public class ejer7 {
+	public static void main(String[] args) {
+
+		File directori = new File(args[0]);
+		String extensio = new String(args[1]);
+		directoriextensio(directori,extensio);
+		
+	}
+
+	public static void directoriextensio(File directori,String extensio) {
+
+
+
+}

@@ -2,32 +2,23 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
-  //Provar a guardar la informacion en un array bidimensional
   const [mat, setMat] = useState({
-    number:  '',
+    number: '',
     sec: '',
   });
-  
+  const [fun, setFun] = useState("");
   const [con, setCon] = useState(1);
   const [res, setRes] = useState('');
   const [sol, setSol] = useState(0);
   const [bul, setBul] = useState(true);
   //Hacerlo como una funcion
-  
+
   function numero(ere) {
-  
-      setMat({
-        number: " .",
-        sec: " .",
-      });
-    
+
     for (let i = 0; i < con; i++) {
-      
-      setMat({
-        number: mat.number + ere,
-        sec: mat.sec,
-      });
-     /*  if (bul==true) {
+
+
+      if (bul == true) {
         setMat({
           number: mat.number + ere,
           sec: mat.sec,
@@ -39,22 +30,35 @@ export default function App() {
           sec: mat.sec + ere,
         });
         setRes(mat.sec)
-      } */
-      
-      
+      }
+
+
     }
- 
+
     setCon(con + 1);
   }
   function sum() {
     setBul(false)
+    setFun("+")
+  }
+  function rest() {
+    setBul(false)
+    setFun("-")
+  }
+  function mult() {
+    setBul(false)
+    setFun("x")
+  }
+  function div() {
+    setBul(false)
+    setFun("/")
   }
   function sen() {
     setMat({
       number: Math.sin(mat.number),
       sec: mat.sec,
     });
-    
+
   }
   function raiz() {
     setMat({
@@ -75,25 +79,109 @@ export default function App() {
     });
   }
   function deg() {
-   /*  setMat({
-      number: Math.tan(mat.number),
-      sec: mat.sec,
-    }); */
-  }
-  function ln() {
-    
-  }
-  function pi() {
     setMat({
-      number: ("3,14159265"),
+      number: mat.number * 180 / Math.PI,
       sec: mat.sec,
     });
   }
+  function rad() {
+    setMat({
+      number: mat.number * Math.PI / 180,
+      sec: mat.sec,
+    });
+  }
+  function ln() {
+    setMat({
+      number: Math.log(mat.number),
+      sec: mat.sec,
+    });
+  }
+  function log() {
+    setMat({
+      number: Math.log10(mat.number),
+      sec: mat.sec,
+    });
+  }
+  function pi() {
+    setMat({
+      number: Math.PI,
+      sec: mat.sec,
+    });
+  }
+  function unox() {
+
+    setMat({
+      number: 1 / (mat.number),
+      sec: mat.sec,
+    });
+  }
+  function fact() {
+    var total = 1;
+
+    for (i = 1; i <= mat.number; i++) {
+      setMat({
+        number: total *= i,
+
+        sec: mat.sec,
+      });
+    }
+  }
+
   function resultado() {
-    alert('n' + mat.number);
-    
-    sol == 0 ? 0 : setRes(sol);
+    switch (fun) {
+      case '+':
+        setMat({
+          number: parseFloat(mat.number) + parseFloat(mat.sec),
+
+          sec: "",
+        });
+        break;
+      case '-':
+
+        setMat({
+          number: parseFloat(mat.number) - parseFloat(mat.sec),
+
+          sec: "",
+        });
+        break;
+      case 'x':
+
+        setMat({
+          number: parseFloat(mat.number) * parseFloat(mat.sec),
+
+          sec: "",
+        });
+        break;
+      case '/':
+
+        setMat({
+          number: parseFloat(mat.number) / parseFloat(mat.sec),
+
+          sec: "",
+        });
+        break;
+      default:
+        setMat({
+          number: mat.number,
+
+          sec: mat.sec,
+        });
+        break;
+    }
+
+
+
     setBul(true)
+  }
+  function reinicio() {
+    setBul(true)
+    setMat({
+      number: '',
+      sec: '',
+    });
+    setRes('');
+    setSol('');
+
   }
 
   return (
@@ -115,8 +203,9 @@ export default function App() {
             borderRadius: 4,
             borderWidth: 1,
           }}>
-          <Text style={{ fontSize: 50, textAlign: 'right', flex: 1 }}>
-           {/*  {res} */ mat.number} 
+          <Text style={{ fontSize: 50, textAlign: 'right', flex: 1 }} >
+
+            {/*  {res} */ mat.number != 0 ? bul == true ? mat.number : mat.sec : 0}
           </Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
@@ -144,7 +233,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}onPress={() => cos()}>
+              }} onPress={() => cos()}>
               <Text>cos</Text>
             </TouchableOpacity>
           </View>
@@ -158,7 +247,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }} onPress={()=>tan()}>
+              }} onPress={() => tan()}>
               <Text>tan</Text>
             </TouchableOpacity>
           </View>
@@ -172,7 +261,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }} onPress={()=>deg()}>
+              }} onPress={() => deg()}>
               <Text>deg</Text>
             </TouchableOpacity>
           </View>
@@ -188,7 +277,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }} onPress={()=>ln()}>
+              }} onPress={() => ln()}>
               <Text>ln</Text>
             </TouchableOpacity>
           </View>
@@ -202,7 +291,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}>
+              }} onPress={() => log()}>
               <Text>log</Text>
             </TouchableOpacity>
           </View>
@@ -216,7 +305,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }} onPress={()=>pi()}>
+              }} onPress={() => pi()}>
               <Text>&Pi;</Text>
             </TouchableOpacity>
           </View>
@@ -230,7 +319,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}>
+              }} onPress={() => rad()}>
               <Text>rad</Text>
             </TouchableOpacity>
           </View>
@@ -246,7 +335,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}>
+              }} onPress={() => unox()}>
               <Text>1/X</Text>
             </TouchableOpacity>
           </View>
@@ -260,7 +349,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}>
+              }} onPress={() => fact()}>
               <Text>!</Text>
             </TouchableOpacity>
           </View>
@@ -274,7 +363,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }} onPress={()=>raiz()}>
+              }} onPress={() => raiz()}>
               <Text>√</Text>
             </TouchableOpacity>
           </View>
@@ -288,7 +377,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}>
+              }} onPress={() => div()}>
               <Text>/</Text>
             </TouchableOpacity>
           </View>
@@ -351,7 +440,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}>
+              }} onPress={() => mult()}>
               <Text>x</Text>
             </TouchableOpacity>
           </View>
@@ -412,7 +501,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}>
+              }} onPress={() => rest()}>
               <Text>-</Text>
             </TouchableOpacity>
           </View>
@@ -492,12 +581,7 @@ export default function App() {
                 backgroundColor: 'gray',
               }}
               onPress={() => {
-                setMat({
-                  number: '0',
-                  sec: '0',
-                });
-                setRes('');
-                setSol('');
+                reinicio()
               }}>
               <Text>C</Text>
             </TouchableOpacity>
@@ -527,7 +611,7 @@ export default function App() {
                 width: 80,
                 height: 80,
                 backgroundColor: 'gray',
-              }}>
+              }} onPress={() => numero('.')}>
               <Text>,</Text>
             </TouchableOpacity>
           </View>

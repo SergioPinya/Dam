@@ -1,12 +1,12 @@
 PEFontSize=12
 applyBackground=false
 approved.defs.file.last.changed.time=1693315978000
-configurationInstallLocation=/home/pinya/eclipse/java-2023-06/eclipse/
+configurationInstallLocation=/C\:/Users/msegi/eclipse/java-2023-09/eclipse/
 eclipse.preferences.version=1
 iconcolormode=primary
 includeThemingInOomph=false
-last.download.attempt.time=1695733083789
-lastConfiguration=1696196422614
+last.download.attempt.time=1696599742742
+lastConfiguration=1696259304514
 newinstall=true
 overridePEFontSize=false
-workbench.theme=Deep Black
+workbench.theme=Dark Gray

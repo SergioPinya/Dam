@@ -53,11 +53,6 @@ public class Vista extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 26, 96, 19);
-		panel.add(textField);
-		textField.setColumns(10);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(266, 42, 298, 271);
 		contentPane.add(panel_1);
@@ -66,6 +61,11 @@ public class Vista extends JFrame {
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.setBounds(203, 240, 85, 21);
 		panel_1.add(btnNewButton);
+		
+		textField = new JTextField();
+		textField.setBounds(85, 241, 96, 19);
+		panel_1.add(textField);
+		textField.setColumns(10);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			

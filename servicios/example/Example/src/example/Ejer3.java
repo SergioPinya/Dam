@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Ejer3 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		Tambien se puede usar el nexline()	cuando es una combinacion de string y integer se especifica los integer con parseInt()
 		
 		Scanner teclado = new Scanner(System.in);

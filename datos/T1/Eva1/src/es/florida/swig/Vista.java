@@ -49,27 +49,27 @@ public class Vista extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(31, 42, 210, 271);
+		panel.setBounds(53, 105, 492, 219);
 		contentPane.add(panel);
-		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(266, 42, 298, 271);
+		panel_1.setBounds(53, 19, 492, 65);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(203, 240, 85, 21);
-		panel_1.add(btnNewButton);
-		
 		textField = new JTextField();
-		textField.setBounds(85, 241, 96, 19);
+		textField.setBounds(39, 24, 96, 19);
 		panel_1.add(textField);
 		textField.setColumns(10);
-		btnNewButton.addActionListener(new ActionListener() {
+		
+		JButton search = new JButton("search");
+		search.setBounds(239, 23, 63, 21);
+		panel_1.add(search);
+		search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				System.out.print("furula");
+				String textSearch = textField.getText();
+				panel_1.showMessageDialog(null, textSearch, "ACTION BUTTON SEARCH", panel_1.INFORMATION_MESSAGE);
 			}
 		});
 	}

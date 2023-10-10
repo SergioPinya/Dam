@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
@@ -58,18 +59,18 @@ public class Vista extends JFrame {
 		panel_1.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(39, 24, 96, 19);
+		textField.setBounds(39, 24, 130, 19);
 		panel_1.add(textField);
 		textField.setColumns(10);
 		
 		JButton search = new JButton("search");
-		search.setBounds(239, 23, 63, 21);
+		search.setBounds(360, 23, 99, 21);
 		panel_1.add(search);
 		search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
 				String textSearch = textField.getText();
-				panel_1.showMessageDialog(null, textSearch, "ACTION BUTTON SEARCH", panel_1.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, textSearch, "Alerta de virus", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 	}

@@ -12,11 +12,13 @@ import javax.swing.JDesktopPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.TextField;
 
 public class Vista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -50,6 +52,11 @@ public class Vista extends JFrame {
 		panel.setBounds(31, 42, 210, 271);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		textField = new JTextField();
+		textField.setBounds(10, 26, 96, 19);
+		panel.add(textField);
+		textField.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(266, 42, 298, 271);

@@ -47,7 +47,7 @@ public class Vista extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(25, 42, 210, 271);
+		panel.setBounds(31, 42, 210, 271);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		

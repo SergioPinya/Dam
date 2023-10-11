@@ -21,6 +21,7 @@ import java.awt.TextField;
 import javax.swing.JTextPane;
 import javax.swing.DropMode;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class Vista extends JFrame {
 
@@ -79,6 +80,7 @@ public class Vista extends JFrame {
 		panel_1.add(search);
 		
 		txtO = new JTextField();
+		txtO.setForeground(new Color(0, 0, 0));
 		txtO.setEditable(false);
 		txtO.setHorizontalAlignment(SwingConstants.LEFT);
 		txtO.setText("Pon la lacalizacion de la carpeta");
@@ -97,10 +99,11 @@ public class Vista extends JFrame {
 				File directorio = new File(textSearch);
 				String[] listaArchivos=null;
 				String list="";
+				Integer tama=0;
 					 listaArchivos = directorio.list(new FiltroExtension(".txt"));
 					 for (int e1 = 0; e1 < listaArchivos.length; e1++) {
-						 
-						 list+=listaArchivos[e1]+"\n";
+						 tama=listaArchivos[e1].length()/1024;
+						 list+=listaArchivos[e1]+" "+tama+"\n";
 							
 						}
 					 textArea.setText(list);

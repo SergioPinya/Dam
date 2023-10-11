@@ -19,12 +19,15 @@ import java.io.File;
 import java.awt.event.ActionEvent;
 import java.awt.TextField;
 import javax.swing.JTextPane;
+import javax.swing.DropMode;
+import javax.swing.SwingConstants;
 
 public class Vista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextField txtO;
 
 	/**
 	 * Launch the application.
@@ -75,10 +78,13 @@ public class Vista extends JFrame {
 		search.setBounds(383, 23, 99, 21);
 		panel_1.add(search);
 		
-		JTextPane txtpnInserteLaDireccion = new JTextPane();
-		txtpnInserteLaDireccion.setText("Inserte la direccion de la carpeta");
-		txtpnInserteLaDireccion.setBounds(10, 7, 173, 19);
-		panel_1.add(txtpnInserteLaDireccion);
+		txtO = new JTextField();
+		txtO.setEditable(false);
+		txtO.setHorizontalAlignment(SwingConstants.LEFT);
+		txtO.setText("Pon la lacalizacion de la carpeta");
+		txtO.setBounds(10, 7, 171, 19);
+		panel_1.add(txtO);
+		txtO.setColumns(10);
 		search.addActionListener(new ActionListener() {
 		
 			/**

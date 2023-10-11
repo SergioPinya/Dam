@@ -13,6 +13,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="ejerT1.ejer7"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="Ejercicio"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="/home/pinya/Documentos .pdf .zip"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="D:\cajonDesastre\Pruevas txt"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Ejercicio"/>
 </launchConfiguration>

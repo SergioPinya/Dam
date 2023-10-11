@@ -1,5 +1,8 @@
 package es.florida.swig;
 
+
+import java.io.File;
+import java.io.FilenameFilter;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -12,8 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.JDesktopPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import java.awt.TextField;
+import javax.swing.JTextPane;
 
 public class Vista extends JFrame {
 
@@ -37,9 +42,6 @@ public class Vista extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Vista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 393);
@@ -52,6 +54,12 @@ public class Vista extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(53, 105, 492, 219);
 		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(170, 5, 312, 204);
+		panel.add(textArea);
+		textArea.setEditable(false);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(53, 19, 492, 65);
@@ -59,18 +67,42 @@ public class Vista extends JFrame {
 		panel_1.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(39, 24, 130, 19);
+		textField.setBounds(10, 36, 130, 19);
 		panel_1.add(textField);
 		textField.setColumns(10);
 		
 		JButton search = new JButton("search");
-		search.setBounds(360, 23, 99, 21);
+		search.setBounds(383, 23, 99, 21);
 		panel_1.add(search);
+		
+		JTextPane txtpnInserteLaDireccion = new JTextPane();
+		txtpnInserteLaDireccion.setText("Inserte la direccion de la carpeta");
+		txtpnInserteLaDireccion.setBounds(10, 7, 173, 19);
+		panel_1.add(txtpnInserteLaDireccion);
 		search.addActionListener(new ActionListener() {
+		
+			/**
+			 *
+			 *Aquesta funcio agafa el archius y els retorna per la pantalla
+			 */
 			public void actionPerformed(ActionEvent e) {
-			
-				String textSearch = textField.getText();
-				JOptionPane.showMessageDialog(null, textSearch, "Alerta de virus", JOptionPane.INFORMATION_MESSAGE);
+			String textSearch = textField.getText();
+
+				File directorio = new File(textSearch);
+				String[] listaArchivos=null;
+				String list="";
+					 listaArchivos = directorio.list(new FiltroExtension(".txt"));
+					 for (int e1 = 0; e1 < listaArchivos.length; e1++) {
+						 
+						 list+=listaArchivos[e1]+"\n";
+							
+						}
+					 textArea.setText(list);
+				
+				
+//				JOptionPane.showMessageDialog(null, "", "Archivos ", JOptionPane.INFORMATION_MESSAGE);
+				
+		
 			}
 		});
 	}

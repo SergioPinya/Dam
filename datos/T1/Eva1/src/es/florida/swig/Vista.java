@@ -99,11 +99,11 @@ public class Vista extends JFrame {
 				File directorio = new File(textSearch);
 				String[] listaArchivos=null;
 				String list="";
-				Integer tama=0;
+		
 					 listaArchivos = directorio.list(new FiltroExtension(".txt"));
 					 for (int e1 = 0; e1 < listaArchivos.length; e1++) {
-						 tama=listaArchivos[e1].length()/1024;
-						 list+=listaArchivos[e1]+" "+tama+"\n";
+						   long size = +listaArchivos[e1].length();
+						 list+=listaArchivos[e1]+" "+size+"bytes"+"\n";
 							
 						}
 					 textArea.setText(list);

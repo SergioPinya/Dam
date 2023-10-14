@@ -23,6 +23,7 @@ import javax.swing.DropMode;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
+
 public class Vista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -45,7 +46,10 @@ public class Vista extends JFrame {
 			}
 		});
 	}
-
+	/**
+	 *
+	 *Aquesta funcio agafa el archius y els retorna per la pantalla
+*/
 	public Vista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 393);
@@ -61,9 +65,44 @@ public class Vista extends JFrame {
 		panel.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(170, 5, 312, 204);
+		textArea.setBounds(170, 50, 312, 159);
 		panel.add(textArea);
 		textArea.setEditable(false);
+		
+		JButton btnNewButton = new JButton("^");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String textSearch =  textArea.getText();
+				JOptionPane.showMessageDialog(null, textSearch, "Archivos ", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		btnNewButton.setBounds(170, 7, 51, 18);
+		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("^");
+		btnNewButton_1.setBounds(239, 6, 46, 19);
+		panel.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("^");
+		btnNewButton_1_1.setBounds(312, 6, 48, 19);
+		panel.add(btnNewButton_1_1);
+		
+		JButton btnV_1 = new JButton("V");
+		btnV_1.setBounds(238, 25, 47, 13);
+		panel.add(btnV_1);
+		
+		JButton btnV_2 = new JButton("V");
+		btnV_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnV_2.setBounds(312, 22, 48, 14);
+		panel.add(btnV_2);
+		
+		JButton btnV = new JButton("V");
+		btnV.setBounds(170, 25, 51, 15);
+		panel.add(btnV);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(53, 19, 492, 65);
@@ -89,24 +128,25 @@ public class Vista extends JFrame {
 		txtO.setColumns(10);
 		search.addActionListener(new ActionListener() {
 		
-			/**
-			 *
-			 *Aquesta funcio agafa el archius y els retorna per la pantalla
-			 */
+			
 			public void actionPerformed(ActionEvent e) {
 			String textSearch = textField.getText();
 
 				File directorio = new File(textSearch);
 				String[] listaArchivos=null;
 				String list="";
+			
 		
 					 listaArchivos = directorio.list(new FiltroExtension(".txt"));
 					 for (int e1 = 0; e1 < listaArchivos.length; e1++) {
-						   long size = +listaArchivos[e1].length();
-						 list+=listaArchivos[e1]+" "+size+"bytes"+"\n";
-							
+						   File file = new File(directorio, listaArchivos[e1]);
+						  
+						 long size = file.length(); 
+						 
+					        list += listaArchivos[e1] + "    " + size + "         " + file.lastModified() + " " + "\n";
 						}
-					 textArea.setText(list);
+					
+					 textArea.setText( "nom     "+" bytes  "+"   "+" Última modificación "+"\n"+list);
 				
 				
 //				JOptionPane.showMessageDialog(null, "", "Archivos ", JOptionPane.INFORMATION_MESSAGE);

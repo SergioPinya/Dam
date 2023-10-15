@@ -2,8 +2,8 @@ package es.florida.swig;
 
 
 import java.io.File;
-import java.io.FilenameFilter;
-import java.awt.BorderLayout;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,16 +12,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JDesktopPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.awt.event.ActionEvent;
-import java.awt.TextField;
-import javax.swing.JTextPane;
-import javax.swing.DropMode;
+
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Vista extends JFrame {
@@ -48,8 +47,9 @@ public class Vista extends JFrame {
 	}
 	/**
 	 *
-	 *Aquesta funcio agafa el archius y els retorna per la pantalla
+	 *Aquesta funcio agafa el archius y els retorna per la pantalla donde despres se va poder filtrar am els botons
 */
+	
 	public Vista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 393);
@@ -71,36 +71,274 @@ public class Vista extends JFrame {
 		
 		JButton btnNewButton = new JButton("^");
 		btnNewButton.addActionListener(new ActionListener() {
+			/**
+			 *Este boton ordena alfabeticamente
+			 */
+		
 			public void actionPerformed(ActionEvent e) {
-				String textSearch =  textArea.getText();
-				JOptionPane.showMessageDialog(null, textSearch, "Archivos ", JOptionPane.INFORMATION_MESSAGE);
+				String textSearch = textField.getText();
+
+				File directorio = new File(textSearch);
+				String[] listaArchivos=null;
+				String list="";
+				
+		
+					 listaArchivos = directorio.list(new FiltroExtension(".txt"));
+					 for (int e1 = 0; e1 < listaArchivos.length; e1++) {
+						   File file = new File(directorio, listaArchivos[e1]);
+						  
+						 long size = file.length(); 
+						 long fecha = file.lastModified();
+							
+						 Date f = new Date(fecha);
+						 SimpleDateFormat fechahora = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy"); 
+
+						 String fecharesul = fechahora.format(f);
+	
+					        list += listaArchivos[e1] + "         " + size + "         " + fecharesul + "         " + "\n";
+					     
+						}
+					 textArea.setText( "nombre    bytes      Última modificación"+"         "+"\n"+list);
+			
+				
 			}
 		});
 		btnNewButton.setBounds(170, 7, 51, 18);
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("^");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			/**
+			 * Este boton ordena los archivos de mayor a menor
+			 */
+			public void actionPerformed(ActionEvent e) {
+
+				String textSearch = textArea.getText();
+				String U = "";
+				//array bidimensional
+				String[][] res;
+					//separar para posicion 1
+				String[] aux = textSearch.split("\n");
+
+				res = new String[aux.length][];
+					//separar  para posicion 2
+				//bi=bidimensional
+				for (int bi = 0; bi < aux.length; bi++) {
+				    res[bi] = aux[bi].split("         ");
+				}
+
+				// Ordena res por la posicion1
+				boolean bulo;
+				do {
+					bulo = false;
+//					p=posicio
+				    for (int p = 1; p < res.length - 1; p++) {
+				        if (Integer.parseInt(res[p][1]) < Integer.parseInt(res[p +1][1])) {
+				            String[] temp = res[p];
+				            res[p] = res[p + 1];
+				            res[p + 1] = temp;
+				            bulo = true;
+				        }
+				    }
+				} while (bulo);
+
+				//Dice resultado
+				for (int i = 0; i < res.length; i++) {
+					
+				    for (int j = 0; j < res[i].length; j++) {
+				     U+=(res[i][j] + "         ");
+				    }
+				   U+=("\n");
+				}
+				textArea.setText(U);
+
+			}
+			
+				// JOptionPane.showMessageDialog(null, "se han encontrado "+u, "Archivos ", JOptionPane.INFORMATION_MESSAGE);
+			
+		});
 		btnNewButton_1.setBounds(239, 6, 46, 19);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("^");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			/**
+			 * @param e este codigo rodena al archivo que a sido modificado més recient
+			 */
+			public void actionPerformed(ActionEvent e) {
+	
+				String textSearch = textArea.getText();
+				String U = "";
+				String[][] res;
+
+				String[] aux = textSearch.split("\n");
+
+				res = new String[aux.length][];
+
+				for (int bi = 0; bi < aux.length; bi++) {
+				    res[bi] = aux[bi].split("         ");
+				}
+
+				
+				boolean bulo;
+				do {
+					bulo = false;
+
+				    for (int p = 1; p < res.length - 1; p++) {
+				        if (res[p][2].compareTo(res[p + 1][2]) > 0)  {
+				            String[] temp = res[p];
+				            res[p] = res[p + 1];
+				            res[p + 1] = temp;
+				            bulo = true;
+				        }
+				    }
+				} while (bulo);
+
+			
+				for (int i = 0; i < res.length; i++) {
+					
+				    for (int j = 0; j < res[i].length; j++) {
+				     U+=(res[i][j] + "         ");
+				    }
+				   U+=("\n");
+				}
+				textArea.setText(U);
+
+			}
+		});
 		btnNewButton_1_1.setBounds(312, 6, 48, 19);
 		panel.add(btnNewButton_1_1);
 		
 		JButton btnV_1 = new JButton("V");
+		btnV_1.addActionListener(new ActionListener() {
+			/**
+			 * @param e aquest buto te filtra les numeres de menor a manyor
+			 */
+			public void actionPerformed(ActionEvent e) {
+				String textSearch = textArea.getText();
+				String U = "";
+				String[][] res;
+
+				String[] aux = textSearch.split("\n");
+
+				res = new String[aux.length][];
+
+				for (int bi = 0; bi < aux.length; bi++) {
+				    res[bi] = aux[bi].split("         ");
+				}
+
+				
+				boolean bulo;
+				do {
+					bulo = false;
+				    for (int p = 1; p < res.length - 1; p++) {
+				        if (Integer.parseInt(res[p][1]) > Integer.parseInt(res[p + 1][1])) {
+				            String[] temp = res[p];
+				            res[p] = res[p + 1];
+				            res[p + 1] = temp;
+				            bulo = true;
+				        }
+				    }
+				} while (bulo);
+
+			
+				for (int i = 0; i < res.length; i++) {
+					
+				    for (int j = 0; j < res[i].length; j++) {
+				     U+=(res[i][j] + "         ");
+				    }
+				   U+=("\n");
+				}
+				textArea.setText(U);
+
+			}
+		});
 		btnV_1.setBounds(238, 25, 47, 13);
 		panel.add(btnV_1);
 		
 		JButton btnV_2 = new JButton("V");
 		btnV_2.addActionListener(new ActionListener() {
+			/**
+			 * aquests buto filtra els archius als mes antics
+			 */
 			public void actionPerformed(ActionEvent e) {
+				String textSearch = textArea.getText();
+				String U = "";
+				String[][] res;
+
+				String[] aux = textSearch.split("\n");
+
+				res = new String[aux.length][];
+
+				for (int bi = 0; bi < aux.length; bi++) {
+				    res[bi] = aux[bi].split("         ");
+				}
+
 				
+				boolean bulo;
+				do {
+					bulo = false;
+				    for (int p = 1; p < res.length - 1; p++) {
+				        if (res[p][2].compareTo(res[p + 1][2]) < 0)  {
+				            String[] temp = res[p];
+				            res[p] = res[p + 1];
+				            res[p + 1] = temp;
+				            bulo = true;
+				        }
+				    }
+				} while (bulo);
+
+			
+				for (int i = 0; i < res.length; i++) {
+					
+				    for (int j = 0; j < res[i].length; j++) {
+				     U+=(res[i][j] + "         ");
+				    }
+				   U+=("\n");
+				}
+				textArea.setText(U);
+
 			}
 		});
 		btnV_2.setBounds(312, 22, 48, 14);
 		panel.add(btnV_2);
 		
 		JButton btnV = new JButton("V");
+		btnV.addActionListener(new ActionListener() {
+			/**
+			 *aquest buto te filtra els archius al orde alfabetic invertit
+			 */
+			public void actionPerformed(ActionEvent e) {
+				
+				String textSearch = textField.getText();
+				File directorio = new File(textSearch);
+				String[] listaArchivos = directorio.list(new FiltroExtension(".txt"));
+//				
+				List<String> listo = new ArrayList<>();
+
+				for (int e1 = 0; e1 < listaArchivos.length; e1++) {
+				    File file = new File(directorio, listaArchivos[e1]);
+
+				    long size = file.length();
+				    long fecha = file.lastModified();
+
+				    Date f = new Date(fecha);
+				    SimpleDateFormat fechahora = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+
+				    String fecharesul = fechahora.format(f);
+				    
+				    String list = listaArchivos[e1] + "         " + size + "         " + fecharesul;
+				    
+				    listo.add(list);
+				}
+
+				Collections.reverse(listo);
+
+				String result = "nombre    bytes      Última modificación" + "         " + "\n" + String.join("\n", listo);
+				textArea.setText(result);
+
+			}
+		});
 		btnV.setBounds(170, 25, 51, 15);
 		panel.add(btnV);
 		
@@ -129,28 +367,35 @@ public class Vista extends JFrame {
 		search.addActionListener(new ActionListener() {
 		
 			
+			/**
+			 *aquest buto troba tots els achius filtrats
+			 */
 			public void actionPerformed(ActionEvent e) {
 			String textSearch = textField.getText();
 
 				File directorio = new File(textSearch);
 				String[] listaArchivos=null;
 				String list="";
-			
+				Integer cunat=0;
 		
 					 listaArchivos = directorio.list(new FiltroExtension(".txt"));
 					 for (int e1 = 0; e1 < listaArchivos.length; e1++) {
 						   File file = new File(directorio, listaArchivos[e1]);
 						  
 						 long size = file.length(); 
-						 
-					        list += listaArchivos[e1] + "    " + size + "         " + file.lastModified() + " " + "\n";
+						 long fecha = file.lastModified();
+							
+						 Date f = new Date(fecha);
+						 SimpleDateFormat fechahora = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy"); 
+
+						 String fecharesul = fechahora.format(f);
+	
+					        list += listaArchivos[e1] + "         " + size + "         " + fecharesul + "         " + "\n";
+					        cunat=e1+1;
 						}
-					
-					 textArea.setText( "nom     "+" bytes  "+"   "+" Última modificación "+"\n"+list);
-				
-				
-//				JOptionPane.showMessageDialog(null, "", "Archivos ", JOptionPane.INFORMATION_MESSAGE);
-				
+					 JOptionPane.showMessageDialog(null, "se han encontrado "+cunat, "Archivos ", JOptionPane.INFORMATION_MESSAGE);
+					 textArea.setText( "nombre    bytes      Última modificación"+"         "+"\n"+list);
+							
 		
 			}
 		});

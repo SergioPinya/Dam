@@ -39,6 +39,7 @@ const App = () =>{
       <TextInput
       label="Email"
       value={text}
+    
       onChangeText={text => setText(text)}
     />
        <Text style={{color: "white"}} variant="headlineSmall">Botton(amb text i icona)</Text>

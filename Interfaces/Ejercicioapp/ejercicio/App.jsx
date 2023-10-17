@@ -12,7 +12,7 @@ import { TextInput } from 'react-native-paper';
 import { Button } from 'react-native-paper';
 import { Switch } from 'react-native-paper';
 import { Provider as PaperProvider, Text } from 'react-native-paper';
-
+ //pruS
 const nom = (textAMostrar) => {
   return (<Text style={styles.sectionTitle} >Hola {textAMostrar}</Text>)
 };

@@ -6,22 +6,38 @@ import {
   Button,
   TextInput,
 } from "react-native";
+import { useState } from 'react';
 
-const TextInputExample = () => {
-  const [text, onChangeText] = React.useState("");
+
+const Ejer1 = () => {
+  const [text, setText] = useState("");
+
+    function alerta() {
+
+      if (isNaN(text)) {
+        setText('');
+        alert('Has introducido texto');
+      } else if (text == "") {
+        alert('No has introducido nada');
+      } else if (!isNaN(text)) {
+        alert('Has introducido un número');
+        setText('');
+      }
+       
+    }
 
   return (
     <SafeAreaView>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
+        onChangeText={newText => setText(newText)}
         placeholder="useless placeholder"
         value={text}
       />
         <Button 
         style={styles.buto}
         title="Press me"
-        onPress={() => Alert.alert("si en un numero")}
+        onPress={() => alerta()}
       />
     </SafeAreaView>
   );
@@ -42,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TextInputExample;
+export default Ejer1;

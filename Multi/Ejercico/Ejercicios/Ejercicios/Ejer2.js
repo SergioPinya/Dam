@@ -5,35 +5,53 @@ import {
     Alert,
     Button,
     TextInput,
+    Text,
 } from "react-native";
 import { useState } from 'react';
 
+
 const Ejer2 = () => {
     const [text, setText] = useState("");
+    const [bulo,setBulo]=useState(false);
+    function calcula() {
+      setText(text/1,609);
+      setBulo(true);
+    
+    }
     return (<SafeAreaView>
+        <Text
+        style={styles.te}>Comvertidor de kilometros a millas</Text>
         <TextInput
             style={styles.input}
             onChangeText={newText => setText(newText)}
-            placeholder="useless placeholder"
+            placeholder="Introduce los kilometros"
             value={text}
         />
+          <Text>{bulo==true?text:""}</Text>
         <Button
             style={styles.buto}
             title="Press me"
-            onPress={() => alerta()}
+            onPress={() => calcula()}
         />
     </SafeAreaView>);
 }
 const styles = StyleSheet.create({
+    te:{
+        marginTop: 80,
+        textAlign:'center',
+        fontSize:20,
+    },
     input: {
         height: 40,
         margin: 12,
-        borderWidth: 1,
+        textAlign:'center',
         padding: 10,
-        marginTop: 80,
+       
     },
     buto: {
-        height: 20,
+        justifyContent: 'center',
+        marginHorizontal: 16,
+        
 
 
     },

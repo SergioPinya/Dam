@@ -1,4 +1,4 @@
-package EjercicioT2;
+package ejercicioT2;
 
 public class ejercicio1 {
 
@@ -26,7 +26,7 @@ public class ejercicio1 {
 
 		int n2 = Integer.parseInt(args[1]);
 
-		int resultado = s.sumar(n1, n2);
+		int resultado = ejercicio1.sumar(n1, n2);
 
 		System.out.println("Resultado de este sumador: " + resultado);
 

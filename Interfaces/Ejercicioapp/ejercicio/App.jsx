@@ -26,7 +26,7 @@ const images = [
 const localImg = require('./imatges/visualstudio_code-card.png')
 const App = () => {
   return (
-//Hola
+//Hola esto es un puto lio
     <View style={styles.contenidor}>
       <View style={styles.seccio1}>
 

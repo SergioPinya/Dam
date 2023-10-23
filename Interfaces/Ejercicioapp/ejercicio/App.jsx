@@ -4,7 +4,9 @@ import {
   StyleSheet,
   View,
   Text,
-  Dimensions
+  Dimensions,
+  Image,
+  Button
 } from 'react-native';
 const screenWidth = Dimensions.get('window').width;
 //Array que conté un llistat d'urls d'imatges a mostrar.
@@ -26,33 +28,36 @@ const images = [
 const localImg = require('./imatges/visualstudio_code-card.png')
 const App = () => {
   return (
-//Hola esto es un puto lio
     <View style={styles.contenidor}>
       <View style={styles.seccio1}>
 
-        <View style={styles.contenidor2}>
-          <Text>imagen</Text>
+        <View style={styles.contHeaderImg}>
+          <Image style={styles.headerImg} source={require("./assets/visual-studio-code-2019.png")}></Image>
         </View>
         <View style={styles.contenidor2}>
-          <View style={styles.contenidor3}>
-
+          <View style={styles.headerCont2}>
+              <View style={styles.contHeader}>
+                <Text>Posts</Text>
+                <Text>20</Text>
+              </View>
+              <View style={styles.contHeader}>
+                <Text>Followers</Text>
+                <Text>110304</Text>
+              </View>
+              <View style={styles.contHeader}>
+                <Text>following</Text>
+                <Text>1103</Text>
+              </View>
           </View>
-          <View style={styles.contenidor3}>
-
-          </View>
-          <View style={styles.contenidor3}>
-
-          </View>
-          <View style={styles.contenidor4}>
-
-          </View>
+            <View style={styles.contenidor4}>
+              <Button title='Edit Profile'></Button>
+            </View>
         </View>
 
       </View>
+
       <View style={styles.seccio2}>
         <Text>Secció 2</Text>
-
-
       </View>
       <View style={styles.seccio3}>
         <Text>Secció 3</Text>
@@ -73,20 +78,34 @@ const styles = StyleSheet.create({
     flex: 1,
     borderColor: 'purple',
     borderWidth: 5,
-    flexDirection: 'row',
-    
-
+    flexDirection: 'column',
   },
-  contenidor3: {
+  contHeaderImg: {
+    flex: 0.5,
+    flexDirection: 'column',
+  },
+  headerImg: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+    borderColor: "black",
+    borderWidth: 2
+  },
+  headerCont2: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+
+  contHeader: {
     flex: 1,
     borderColor: 'green',
-    borderWidth: 5,
+    borderWidth: 2,
     
 
   }, contenidor4: {
-    flex: 3,
+    flex: 1,
     borderColor: 'green',
-    borderWidth: 5,
+    borderWidth: 2,
    
   },
   

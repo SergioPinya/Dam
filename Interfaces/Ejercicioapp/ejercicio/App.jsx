@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Dimensions
+  Dimensions,
+  Image
 } from 'react-native';
 const screenWidth = Dimensions.get('window').width;
 //Array que conté un llistat d'urls d'imatges a mostrar.
@@ -24,9 +25,10 @@ const images = [
 ];
 //Guardeu la imatge del logo de VS Code en la següent ubicació
 const localImg = require('./imatges/visualstudio_code-card.png')
+
 const App = () => {
   return (
-
+    
     <View style={styles.contenidor}>
       <View style={styles.seccio1}>
 
@@ -50,8 +52,20 @@ const App = () => {
 
       </View>
       <View style={styles.seccio2}>
-        <Text>Secció 2</Text>
+       
 
+        <Image source={{uri:images[0]}} 
+         style={styles.imagen} />
+         <Image source={{uri:images[1]}} 
+         style={styles.imagen} />
+          <Image source={{uri:images[1]}} 
+         style={styles.imagen} />
+          <Image source={{uri:images[1]}} 
+         style={styles.imagen} />
+          <Image source={{uri:images[1]}} 
+         style={styles.imagen} />
+          <Image source={{uri:images[1]}} 
+         style={styles.imagen} />
 
       </View>
       <View style={styles.seccio3}>
@@ -76,20 +90,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     
 
+
+  },
+  imagen: {
+    width: 80,
+   height: 80,
+  
+
   },
   contenidor3: {
     flex: 1,
     borderColor: 'green',
     borderWidth: 5,
-    
+
 
   }, contenidor4: {
     flex: 3,
     borderColor: 'green',
     borderWidth: 5,
-   
+
   },
-  
+
   seccio1: {
     flex: 0.25,
     borderColor: 'red',
@@ -110,6 +131,9 @@ const styles = StyleSheet.create({
     margin: 4,
     padding: 12,
     textAlign: 'center',
+    flexDirection: 'row',
+    justifyContent:'space-evenly',
+    flexWrap:"wrap"
 
   },
   seccio3: {

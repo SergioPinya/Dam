@@ -5,7 +5,8 @@ import {
   View,
   Text,
   Dimensions,
-  Image
+  Image,
+
 } from 'react-native';
 const screenWidth = Dimensions.get('window').width;
 //Array que conté un llistat d'urls d'imatges a mostrar.
@@ -23,12 +24,13 @@ const images = [
   'https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=125&h=125&fit=crop',
   'https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=125&h=125&fit=crop',
 ];
+const fruites = ['peres', 'pomes', 'taronges', 'plàtans'];
 //Guardeu la imatge del logo de VS Code en la següent ubicació
 const localImg = require('./imatges/visualstudio_code-card.png')
 
 const App = () => {
   return (
-    
+
     <View style={styles.contenidor}>
       <View style={styles.seccio1}>
 
@@ -52,20 +54,13 @@ const App = () => {
 
       </View>
       <View style={styles.seccio2}>
-       
 
-        <Image source={{uri:images[0]}} 
-         style={styles.imagen} />
-         <Image source={{uri:images[1]}} 
-         style={styles.imagen} />
-          <Image source={{uri:images[1]}} 
-         style={styles.imagen} />
-          <Image source={{uri:images[1]}} 
-         style={styles.imagen} />
-          <Image source={{uri:images[1]}} 
-         style={styles.imagen} />
-          <Image source={{uri:images[1]}} 
-         style={styles.imagen} />
+        
+        {images.map((foto) => {
+            return(<Image source={{ uri: {foto} }}style={styles.imagen}></Image> );
+        })}
+
+        
 
       </View>
       <View style={styles.seccio3}>
@@ -88,14 +83,14 @@ const styles = StyleSheet.create({
     borderColor: 'purple',
     borderWidth: 5,
     flexDirection: 'row',
-    
+
 
 
   },
   imagen: {
     width: 80,
-   height: 80,
-  
+    height: 80,
+
 
   },
   contenidor3: {
@@ -132,8 +127,8 @@ const styles = StyleSheet.create({
     padding: 12,
     textAlign: 'center',
     flexDirection: 'row',
-    justifyContent:'space-evenly',
-    flexWrap:"wrap"
+    justifyContent: 'space-evenly',
+    flexWrap: "wrap"
 
   },
   seccio3: {

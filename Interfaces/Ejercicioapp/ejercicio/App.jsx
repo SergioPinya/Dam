@@ -50,7 +50,7 @@ const App = () => {
               </View>
           </View>
             <View style={styles.contenidor4}>
-              <Button title='Edit Profile'></Button>
+              <Button title='Edit Profile' color={"grey"}></Button>
             </View>
         </View>
 
@@ -76,8 +76,6 @@ const styles = StyleSheet.create({
   },
   contenidor2: {
     flex: 1,
-    borderColor: 'purple',
-    borderWidth: 5,
     flexDirection: 'column',
   },
   contHeaderImg: {
@@ -98,21 +96,13 @@ const styles = StyleSheet.create({
 
   contHeader: {
     flex: 1,
-    borderColor: 'green',
-    borderWidth: 2,
-    
-
-  }, contenidor4: {
-    flex: 1,
-    borderColor: 'green',
-    borderWidth: 2,
-   
+  }, 
+  contenidor4: {
+    flex: 1
   },
   
   seccio1: {
     flex: 0.25,
-    borderColor: 'red',
-    borderWidth: 3,
     fontSize: 12,
     fontWeight: '600',
     margin: 4,

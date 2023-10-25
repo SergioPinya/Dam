@@ -19,6 +19,7 @@ public class Ejer8 {
 				fichero.createNewFile();
 				System.out.println("El fichero se ha copiado correctamente");
 		} catch (IOException ioe) {
+			
 			ioe.printStackTrace();
 		}
 	}

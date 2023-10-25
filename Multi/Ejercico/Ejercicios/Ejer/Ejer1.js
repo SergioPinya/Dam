@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 const Ejer1 = () => {
   const [text, setText] = useState("");
-  const [numeros, setNumeros]=useState("");
+  const [numeros, setNumeros]=useState([]);
     function alerta() {
 
       if (isNaN(text)) {
@@ -22,7 +22,9 @@ const Ejer1 = () => {
         alert('No has introducido nada');
       } else if (!isNaN(text)) {
         alert('Has introducido un número');
-        setNumeros(text)
+        let newArray = [...numeros];
+        numeros.push(numero);
+        setNumeros(newArray);
         setText('');
        
       }
@@ -30,15 +32,15 @@ const Ejer1 = () => {
     }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <TextInput
         style={styles.input}
         onChangeText={newText => setText(newText)}
-        placeholder="useless placeholder"
-        value={text}
+        placeholder="Pon un numero"
+        value={numeros}
       />
         <Button 
-        style={styles.buto}
+        style={styles}
         title="Press me"
         onPress={() => alerta()}
       />
@@ -49,15 +51,13 @@ const Ejer1 = () => {
 
 const styles = StyleSheet.create({
   input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    marginTop: 80,
+  textAlign:"center",
   },
-  buto:{
-    height: 20,
-
+  container:{
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
 
   },
 });

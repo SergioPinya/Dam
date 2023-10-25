@@ -10,19 +10,21 @@ import {
 import { useState } from 'react';
 
 
-const Ejer2 = () => {
+const Ejer4 = () => {
     const [text, setText] = useState("");
     const [numeros, setNumeros] = useState([]);
+    
 
     function al() {
 
         setNumeros(numeros + text + "\n")
         setText("");
+    console.log(JSON.stringify(numeros))
     }
     function alerta() {
 
         if (isNaN(text)) {
-            setText('');
+           al()
             alert('Has introducido texto');
         } else if (text == "") {
             alert('No has introducido nada');
@@ -51,6 +53,18 @@ const Ejer2 = () => {
                 onPress={() => alerta()}
             />
             <Text style={styles.resul}>{numeros}</Text>
+            <TextInput
+                style={styles.input}
+                onChangeText={newText => setText(newText)}
+                placeholder="useless placeholder"
+                value={text}
+            />
+            <Button
+                style={styles.buto}
+                title="Press me"
+                onPress={() => alerta()}
+            />
+            <Text style={styles.resul}>{numeros[0]}</Text>
         </SafeAreaView>
     );
 };
@@ -75,4 +89,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Ejer2;
+export default Ejer4;

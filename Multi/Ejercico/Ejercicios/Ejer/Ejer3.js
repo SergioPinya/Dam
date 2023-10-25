@@ -10,9 +10,10 @@ import {
 import { useState } from 'react';
 
 
-const Ejer2 = () => {
+const Ejer3 = () => {
     const [text, setText] = useState("");
     const [numeros, setNumeros] = useState([]);
+    
 
     function al() {
 
@@ -22,7 +23,7 @@ const Ejer2 = () => {
     function alerta() {
 
         if (isNaN(text)) {
-            setText('');
+           al()
             alert('Has introducido texto');
         } else if (text == "") {
             alert('No has introducido nada');
@@ -75,4 +76,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Ejer2;
+export default Ejer3;

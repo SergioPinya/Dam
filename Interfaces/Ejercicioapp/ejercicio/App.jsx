@@ -24,7 +24,6 @@ const images = [
   'https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=125&h=125&fit=crop',
   'https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=125&h=125&fit=crop',
 ];
-const fruites = ['peres', 'pomes', 'taronges', 'plàtans'];
 //Guardeu la imatge del logo de VS Code en la següent ubicació
 const localImg = require('./imatges/visualstudio_code-card.png')
 
@@ -57,7 +56,7 @@ const App = () => {
 
         
         {images.map((foto) => {
-            return(<Image source={{ uri: {foto} }}style={styles.imagen}></Image> );
+            return(<Image source={{ uri: foto }}style={styles.imagen}></Image> );
         })}
 
         

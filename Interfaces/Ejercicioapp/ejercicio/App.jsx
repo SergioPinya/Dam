@@ -63,7 +63,7 @@ const App = () => {
 
       </View>
       <View style={styles.seccio3}>
-        <Text>Secció 3</Text>
+       
       </View>
     </View>
   );
@@ -73,9 +73,7 @@ const styles = StyleSheet.create({
   contenidor: {
     flex: 1,
     flexDirection: 'column',
-    borderColor: 'purple',
-    borderWidth: 5,
-
+   
   },
   contenidor2: {
     flex: 1,
@@ -118,8 +116,8 @@ const styles = StyleSheet.create({
   },
   seccio2: {
     flex: 1,
-    borderColor: 'green',
-    borderWidth: 3,
+   
+   
     fontSize: 12,
     fontWeight: '600',
     margin: 4,
@@ -132,8 +130,7 @@ const styles = StyleSheet.create({
   },
   seccio3: {
     flex: 0.25,
-    borderColor: 'blue',
-    borderWidth: 3,
+   
     fontSize: 12,
     fontWeight: '600',
     margin: 4,

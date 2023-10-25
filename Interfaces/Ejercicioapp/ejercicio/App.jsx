@@ -58,23 +58,30 @@ const App = () => {
 
       </View>
 
-      <View style={styles.seccio2}>
+     <Body>
+      
+     </Body>
 
-        
-        {images.map((foto, index) => {
-            return(<Image key={index.toString()} source={{ uri: foto }}style={styles.imagen}></Image> );
-        })}
-
-        
-
-      </View>
       <View style={styles.seccio3}>
        
       </View>
     </View>
   );
 };
+const Body=()=>{
+  return(
+    <View style={styles.seccio2}>
 
+        
+    {images.map((foto, index) => {
+        return(<Image key={index.toString()} source={{ uri: foto }}style={styles.imagen}></Image> );
+    })}
+
+    
+
+  </View>
+  );
+}
 const styles = StyleSheet.create({
   contenidor: {
     flex: 1,

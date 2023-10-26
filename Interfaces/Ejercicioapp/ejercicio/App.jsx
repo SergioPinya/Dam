@@ -8,6 +8,9 @@ import {
   Image,
   Button
 } from 'react-native';
+
+import  Header  from './components/Header';
+
 const screenWidth = Dimensions.get('window').width;
 //Array que conté un llistat d'urls d'imatges a mostrar.
 const images = [
@@ -32,7 +35,7 @@ const App = () => {
 
     <View style={styles.contenidor}>
       
-      <Header></Header>
+      <Header tit1="Posts" value1="21"></Header>
 
      <Body>
       
@@ -44,7 +47,7 @@ const App = () => {
     </View>
   );
 };
-const Body=()=>{
+const Body=(Props)=>{
   return(
     <View style={styles.seccio2}>
 
@@ -58,37 +61,8 @@ const Body=()=>{
   </View>
   );
 }
-const Header = () => {
 
-  return (
-    <View style={styles.seccio1}>
-    <View style={styles.contHeaderImg}>
-      <Image style={styles.headerImg} source={require("./assets/visual-studio-code-2019.png")}></Image>
-    </View>
-    <View style={styles.contenidor2}>
-      <View style={styles.headerCont2}>
-          <View style={styles.contHeader}>
-            <Text>Posts</Text>
-            <Text>20</Text>
-          </View>
-          <View style={styles.contHeader}>
-            <Text>Followers</Text>
-            <Text>110304</Text>
-          </View>
-          <View style={styles.contHeader}>
-            <Text>following</Text>
-            <Text>1103</Text>
-          </View>
-      </View>
-        <View style={styles.contenidor4}>
-          <Button title='Edit Profile' color={"grey"}></Button>
-        </View>
-    </View>
-
-  </View>
-  )
-}
-
+//Llevar los estilos a los lugares que quiero importar
 const styles = StyleSheet.create({
   contenidor: {
     flex: 1,
@@ -153,7 +127,6 @@ const styles = StyleSheet.create({
   },
   seccio3: {
     flex: 0.25,
-   
     fontSize: 12,
     fontWeight: '600',
     margin: 4,

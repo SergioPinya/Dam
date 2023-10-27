@@ -26,11 +26,11 @@ public class Ejer2 {
 			    br = new BufferedReader(fr);
 	         System.out.println("Contenido del archiu: ");
 	     
-	        String linea;
+	        String caracter;
 	     
-	         while((linea=br.readLine())!=null) {
+	         while((caracter=br.readLine())!=null) {
 	        	 Thread.sleep(1000);
-	            System.out.println(linea);
+	            System.out.println(caracter);
 	         }
 	      }
 

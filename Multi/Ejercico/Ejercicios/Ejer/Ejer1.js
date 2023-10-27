@@ -16,17 +16,16 @@ const Ejer1 = () => {
     function alerta() {
 
       if (isNaN(text)) {
-        setText('');
         alert('Has introducido texto');
+        setText("")
       } else if (text == "") {
         alert('No has introducido nada');
       } else if (!isNaN(text)) {
         alert('Has introducido un número');
         let newArray = [...numeros];
-        numeros.push(numero);
+        newArray.push(text);
         setNumeros(newArray);
-        setText('');
-       
+        setText("")
       }
        
     }
@@ -37,7 +36,7 @@ const Ejer1 = () => {
         style={styles.input}
         onChangeText={newText => setText(newText)}
         placeholder="Pon un numero"
-        value={numeros}
+       value={text}
       />
         <Button 
         style={styles}

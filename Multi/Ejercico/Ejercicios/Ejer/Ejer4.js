@@ -12,81 +12,72 @@ import { useState } from 'react';
 
 const Ejer4 = () => {
     const [text, setText] = useState("");
-    const [numeros, setNumeros] = useState([]);
-    
-
-    function al() {
-
-        setNumeros(numeros + text + "\n")
-        setText("");
-    console.log(JSON.stringify(numeros))
-    }
-    function alerta() {
-
+    const [texto, setTexto] = useState("");
+    const [numeros, setNumeros]=useState([]);
+    const [letras, setLetras]=useState([]);
+      function alerta() {
+  
         if (isNaN(text)) {
-           al()
-            alert('Has introducido texto');
+          let newArray = [...letras];
+          newArray.push(text);
+          setLetras(newArray);
+          
+          setText("")
         } else if (text == "") {
-            alert('No has introducido nada');
+          alert('No has introducido nada');
         } else if (!isNaN(text)) {
-            alert('Has introducido un número');
-
-            al()
-
-
+         
+          let newArray = [...numeros];
+          newArray.push(text);
+          setNumeros(newArray);
+          
+          setText("")
         }
-
-    }
+         
+      }
 
 
     return (
-        <SafeAreaView>
-            <TextInput
-                style={styles.input}
-                onChangeText={newText => setText(newText)}
-                placeholder="useless placeholder"
-                value={text}
-            />
-            <Button
-                style={styles.buto}
-                title="Press me"
-                onPress={() => alerta()}
-            />
-            <Text style={styles.resul}>{numeros}</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={newText => setText(newText)}
-                placeholder="useless placeholder"
-                value={text}
-            />
-            <Button
-                style={styles.buto}
-                title="Press me"
-                onPress={() => alerta()}
-            />
-            <Text style={styles.resul}>{numeros[0]}</Text>
-        </SafeAreaView>
+        <SafeAreaView style={styles.container}>
+          <TextInput
+          style={styles.input}
+          onChangeText={newText => setText(newText)}
+          placeholder="Pon una letra"
+         value={text}
+        />
+          <Button 
+          style={styles}
+          title="Press me"
+          onPress={() => alerta()}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={newText => setTexto(newText)}
+          placeholder="Pon un numero"
+         value={texto}
+        />
+          <Button 
+          style={styles}
+          title="Press me"
+          onPress={() => alerta()}
+        />
+        <Text>{letras[texto]}</Text>
+     
+      </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     input: {
-        height: 40,
-        margin: 12,
-
-        padding: 10,
-        marginTop: 80,
-        textAlign: "center",
-    },
-    buto: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    resul: {
-        textAlign: "center",
-    },
+        textAlign:"center",
+        },
+        container:{
+          flex: 1,
+          backgroundColor: '#fff',
+          alignItems: 'center',
+          justifyContent: 'center',
+      
+        },
 });
 
 export default Ejer4;

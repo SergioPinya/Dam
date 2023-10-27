@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"es.florida.swig","c":"Vista","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"es.florida.swig","c":"Vista","l":"Vista()","u":"%3Cinit%3E()"}];updateSearchResults();

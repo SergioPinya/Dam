@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Scanner;
 
 public class Ejer7 {
 
@@ -18,22 +19,24 @@ public class Ejer7 {
 			FileReader fr = null;
 
 			BufferedReader br = null;
-
-			File archiu = new File(args[0]);
+			System.out.println("Inserte la ruta del archivo el cual deseas inseratar la informacion");
+			Scanner datos = new Scanner(System.in);
+			
 			// Hace que la variable escritura sea una variable global
+		
+			String name = datos.nextLine();
 			FileWriter escritura = null;
-
 			try {
 				//Guarda en la variable escritura el fichero que deseamos editar.
-				
+				//
 				escritura = new FileWriter("D:/cajonDesastre/Pruevas/vacio.txt");
 				System.out.println("Nom del archiu ");
 				// muestra el nombre del archivo y hace un salto de linea
-				System.out.println(archiu.getName() + "\n");
+			
 
-				fr = new FileReader(archiu);
-				br = new BufferedReader(fr);
-				System.out.println("Contenido del archiu: ");
+				
+			
+				
 
 				int caracter;
 			
@@ -63,6 +66,9 @@ public class Ejer7 {
 							escritura.flush();
 							escritura.close();					
 						}
+						 if (archiReciv !=null) {
+							 archiReciv.close();
+						    }
 					if (null != fr) {
 						fr.close();
 					}

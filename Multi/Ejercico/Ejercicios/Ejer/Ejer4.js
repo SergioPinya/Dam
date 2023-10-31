@@ -35,7 +35,9 @@ const Ejer4 = () => {
         }
          
       }
-
+      function alertar() {
+        console.log(letras);
+      }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -59,7 +61,7 @@ const Ejer4 = () => {
           <Button 
           style={styles}
           title="Press me"
-          onPress={() => alerta()}
+          onPress={() => alertar()}
         />
         <Text>{letras[texto]}</Text>
      

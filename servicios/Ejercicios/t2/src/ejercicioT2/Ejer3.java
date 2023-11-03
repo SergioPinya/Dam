@@ -1,7 +1,7 @@
 package ejercicioT2;
 
 public class Ejer3 {
-
+/*  */
 	
 
 	public static int sumar(int n1, int n2) {

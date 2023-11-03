@@ -1,82 +1,53 @@
 package ejerT2;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Ejer7 {
 
-
-	
-
-
 		// Realitza un programa que permeta rebre per teclat una sèrie de strings per part de l’usuari
 	//i els vaja escrivint en un fitxer de text. Com a condició de finalització, l’usuari haurà
 	//d’escriure un string que siga “exit”.
+	
 		public static void main(String[] args) {
-
-			FileReader fr = null;
-
-			BufferedReader br = null;
-			System.out.println("Inserte la ruta del archivo el cual deseas inseratar la informacion");
-			Scanner datos = new Scanner(System.in);
-			
-			// Hace que la variable escritura sea una variable global
-		
-			String name = datos.nextLine();
-			FileWriter escritura = null;
-			try {
-				//Guarda en la variable escritura el fichero que deseamos editar.
-				//
-				escritura = new FileWriter("D:/cajonDesastre/Pruevas/vacio.txt");
-				System.out.println("Nom del archiu ");
-				// muestra el nombre del archivo y hace un salto de linea
-			
-
-				
-			
-				
-
-				int caracter;
-			
-				// contador
-				int caracteresMostrados = 0;
-				// mientras caracteres tenga un valor se seguira ejecutando
-				// br.readLine() se encarga de leer una linea de caracter y te devolverla
-				while ((caracter = br.read()) != -1 && caracteresMostrados<150 ) {
-					//escribe en el fichero guardado en la variable escritura los valores enteros para
-					//convertirlos en caracteres 
-					escritura.write(caracter);
-					
-					caracteresMostrados++;
-				}
-
-			}
-
-			catch (Exception e) {
-
-				e.printStackTrace();
-			} finally {
-
-				try {
-					//si escritura debuelve null se ejecutan los comando de abajo 
-					//los cuales detienen el proceso de escritura
-						if (escritura != null) {
-							escritura.flush();
-							escritura.close();					
-						}
-						 if (archiReciv !=null) {
-							 archiReciv.close();
-						    }
-					if (null != fr) {
-						fr.close();
-					}
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-			}
-		}
+			//Declaramos la variable de en la cual almacenaremos todos los caracteres que le vamos a pasar por consola
+				Scanner datos = new Scanner(System.in);
+				//Declaramos las variables globales 
+				FileWriter fichero = null;
+		        PrintWriter pw = null;
+		    
+		        try
+		        {
+		        	//le Parasom el fichero en el que queremos escribir{
+		            fichero = new FileWriter("D:/cajonDesastre/Pruevas/vacio.txt");
+		            pw = new PrintWriter(fichero);
+		            //}
+		            //declaramos la variable que va ha escribir como a verificar el bucle
+		            String letras; 
+		           do{     
+		        	  //se guarda un salto de linea en letras
+		        	   letras = datos.nextLine();
+		        	   //se esctriben las letras en el fichero
+		             pw.println(letras);
+		             //si letras no es igual a exit y es falso se para el bucle
+		            }while (letras.equals("exit")==false );
+		           
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        } finally {
+		           try {
+		           // Nuevamente aprovechamos el finally para 
+		           // asegurarnos que se cierra el fichero.
+		        	   if(datos != null) {
+		        		   datos.close();
+		        	   }
+		           if (null != fichero)
+		              fichero.close();
+		           } catch (Exception e2) {
+		              e2.printStackTrace();
+		           }
+		        }
+		    }
 
 	}
 

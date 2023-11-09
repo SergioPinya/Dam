@@ -32,13 +32,16 @@ const calcular= () => {
     <PaperProvider>
       <View style={styles.contenidor}>
         <View style={styles.header}>
-          <Text>Calculadora </Text>
-          <Text>I</Text>
-          <Text>M</Text>
-          <Text>C</Text>
-        </View>
+          <Text style={{fontSize:30}}>Calculadora </Text>
+          </View>
+          <View style={styles.header2}>
+          <Text style={{color: "red", fontSize:30}}>I</Text>
+          <Text style={{color: "green",fontSize:30}}>M</Text>
+          <Text style={{color: "blue",fontSize:30}}>C</Text>
+          </View>
+        
         <View style={styles.articlepes}>
-          <Text>Pes</Text><TextInput keyboardType="numeric" onChangeText={text=>setPeso(text)}></TextInput>
+          <Text>Pes</Text><TextInput placeholder='Kg' style={{borderColor: "green"}} keyboardType="numeric" onChangeText={text=>setPeso(text)}></TextInput>
         </View>
         <View style={styles.articlealt}>
           <Text>Alçada</Text><TextInput keyboardType="numeric" onChangeText={text=>setAlçada(text)}></TextInput>
@@ -65,9 +68,12 @@ const styles = StyleSheet.create({
   },
   header: {
     borderColor: "red",
-    borderWidth: 2,
-    flex: 1,
-    padding: 1,
+    flexDirection: 'row',
+    justifyContent:'center',
+
+  }, 
+  header2: {
+    
     flexDirection: 'row',
     justifyContent:'center',
 

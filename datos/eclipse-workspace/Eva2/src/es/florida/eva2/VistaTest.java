@@ -1,5 +1,7 @@
 package es.florida.eva2;
 
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -13,7 +15,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
-public class Vista extends JFrame {
+public class VistaTest extends JFrame {
+
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -25,13 +28,24 @@ public class Vista extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VistaTest frame = new VistaTest();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 	/**
 	 * Create the frame.
 	 */
-	public Vista() {
-		//Al usar varias ventanas la opcion correcta es usar un DISPOSE_ON_CLOSE
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	public VistaTest() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,16 +95,5 @@ public class Vista extends JFrame {
 		verification.setColumns(10);
 		this.setVisible(true);
 	}
-	public JButton getBtnCon() {
-		return btnCon;
-	}
-	public JTextField getTextUser() {
-		return textUser;
-	}
-	public JTextField getTextPass() {
-		return textPass;
-	}
-	public JTextField getVerification() {
-		return verification;
-	}
+
 }

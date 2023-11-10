@@ -1,5 +1,8 @@
 package es.florida.eva2;
 
-public class Controlador {
 
+
+public class Controlador {
+	private Model modelo;
+	private Vista vista;
 }

@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
       borderColor: "red",
       flexDirection: 'row',
       justifyContent: 'center',
-  
+        
     },
     header2: {
-  
+        
       flexDirection: 'row',
       justifyContent: 'center',
-      
+      flex:1,
   
     },  });
 export default Titol;
